@@ -4,19 +4,17 @@ import Head from 'next/head'
 
 const AdminUser: NextPage = () => {
   const router = useRouter()
-
+  const id = router.query.id
   const goToLogin = () => {
     router.push('/login')
   }
 
-  console.log(router)
-
   return (
     <>
       <Head>
-        <title>User Detail</title>
+        <title>User</title>
       </Head>
-      <h1>Admin User</h1>
+      <h1>Admin User {id}</h1>
       <button onClick={goToLogin}>Go to Login Page</button>
     </>
   )

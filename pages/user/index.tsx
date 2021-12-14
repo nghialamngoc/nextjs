@@ -1,4 +1,6 @@
 import { NextPage } from 'next'
+import User from '../../components/User'
+import { UserListProps } from '../../interface/user'
 
 const UserList: NextPage<UserListProps> = (props: UserListProps) => {
   const { data } = props
@@ -6,19 +8,10 @@ const UserList: NextPage<UserListProps> = (props: UserListProps) => {
     <>
       <div>List of user</div>
       {data.map((user) => {
-        return (
-          <div key={user.id}>
-            <p>{user.name}</p>
-            <p>{user.email}</p>
-          </div>
-        )
+        return <User key={user.id} data={user}></User>
       })}
     </>
   )
-}
-
-interface UserListProps {
-  data: Array<any>
 }
 
 export default UserList

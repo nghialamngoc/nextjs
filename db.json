@@ -1,0 +1,84 @@
+{
+  "dashboard": {
+    "posts": 25,
+    "likes": 100,
+    "followers": 20,
+    "following": 50
+  },
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "posts": [
+    {
+      "id": 1,
+      "title": "Post 1",
+      "price": 1000,
+      "description": "Desciption 1"
+    },
+    {
+      "id": 2,
+      "title": "Post 2",
+      "price": 2000,
+      "description": "Desciption 2"
+    },
+    {
+      "id": 3,
+      "title": "Post 7",
+      "price": 3000,
+      "description": "Desciption 3"
+    },
+    {
+      "id": 4,
+      "title": "Post 10",
+      "price": 5000,
+      "description": "Desciption 7"
+    }
+  ],
+  "news": [
+    {
+      "id": 1,
+      "title": "New artical 1",
+      "description": "Desc 1",
+      "category": "sports"
+    },
+    {
+      "id": 2,
+      "title": "New artical 2",
+      "description": "Desc 2",
+      "category": "politices"
+    },
+    {
+      "id": 3,
+      "title": "New artical 3",
+      "description": "Desc 3",
+      "category": "sports"
+    }
+  ],
+  "events": [
+    {
+      "id": 1,
+      "title": "Event 1",
+      "desc": "Desc 1",
+      "category": "sport"
+    },
+    {
+      "id": 2,
+      "title": "Event 2",
+      "desc": "Desc 2",
+      "category": "technology"
+    },
+    {
+      "id": 3,
+      "title": "Event 3",
+      "desc": "Desc 3",
+      "category": "food"
+    }
+  ]
+}

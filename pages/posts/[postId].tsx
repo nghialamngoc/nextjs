@@ -1,6 +1,7 @@
 import { GetStaticPropsContext, NextPage } from 'next'
 import { ParsedUrlQuery } from 'querystring'
 import Link from 'next/link'
+import { useRouter } from 'next/dist/client/router'
 
 interface PostProps {
   data: any
@@ -11,11 +12,18 @@ interface Params extends ParsedUrlQuery {
 }
 
 const PostDetail: NextPage<PostProps> = ({ data }) => {
+  const router = useRouter()
+
+  if (router.isFallback) {
+    return <div>Loading...</div>
+  }
+
   return (
     <div>
       <p>{data.id}</p>
       <p>{data.title}</p>
-      <p>{data.body}</p>
+      <p>{data.price}</p>
+      <p>{data.description}</p>
       <Link href="/posts">
         <a>Post</a>
       </Link>
@@ -26,7 +34,7 @@ const PostDetail: NextPage<PostProps> = ({ data }) => {
 export default PostDetail
 
 export async function getStaticPaths() {
-  const res = await fetch('https://jsonplaceholder.typicode.com/posts')
+  const res = await fetch('http://localhost:4000/posts')
   const posts = await res.json()
 
   const paths = posts.slice(0, 3).map((post: any) => {
@@ -39,16 +47,16 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: 'blocking',
+    fallback: true,
   }
 }
 
 export async function getStaticProps(context: GetStaticPropsContext<Params>) {
   const { params } = context
-
   let data: any = {}
   if (params) {
-    const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${params.postId}`)
+    console.log(`Generating / Regenerating ${params.postId}`)
+    const response = await fetch(`http://localhost:4000/posts/${params.postId}`)
     data = await response.json()
 
     if (!data.id) {
@@ -62,5 +70,6 @@ export async function getStaticProps(context: GetStaticPropsContext<Params>) {
     props: {
       data: data,
     },
+    revalidate: 10,
   }
 }
